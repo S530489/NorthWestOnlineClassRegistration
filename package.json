@@ -1,0 +1,24 @@
+{
+  "name": "W07",
+  "version": "0.0.1",
+  "description": "fashion designing app",
+  "main": "app.js",
+  "dependencies": {
+    "alertifyjs": "^1.11.2",
+    "body-parser": "latest",
+    "chromedriver": "^2.43.1",
+    "ejs": "^2.6.1",
+    "express": "latest",
+    "firebase": "latest",
+    "mailgun-js": "latest",
+    "morgan": "latest",
+    "node-static": "latest",
+    "nodemailer": "^4.6.8",
+    "selenium-webdriver": "^4.0.0-alpha.1",
+    "sweetalert": "^2.1.2"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "chai": "^4.1.2"
+  }
+}

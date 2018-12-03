@@ -1,0 +1,80 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #006747;
+}
+
+
+#courses {
+    font-family:sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+    align-content: center;
+    word-wrap: break-word;
+}
+
+#courses td, #courses th {
+    padding: 7px;
+}
+
+
+
+#courses tr:hover {
+    background-color: #ddd;
+
+}
+
+#courses th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #006747;
+    color: white;
+}
+
+table {
+    width: 80%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid #cdcdcd;
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+}
+input{
+  font-size: 20px;  
+  padding: 5px;
+  border: 1px solid #006747;
+  border-radius: 5px;
+}
