@@ -11,7 +11,7 @@ router.get("/userLogin", function (req, res) {
   res.render("userLogin.ejs");
 });
 
-router.post("/userHome", function (req, res) {
+router.all("/userHome", function (req, res) {
   res.render("userHome.ejs");
 });
 
@@ -33,7 +33,7 @@ router.get("/adminLogin", function (req, res) {
   res.render("adminLogin.ejs");
 });
 
-router.post("/adminHome", function (req, res) {
+router.all("/adminHome", function (req, res) {
   res.render("adminHome.ejs");
 });
 
