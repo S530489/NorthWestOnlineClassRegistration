@@ -35,7 +35,6 @@ app.all("/", function (request, response) {
 });
 
 
-
 // handle http GET requests (default)
   
   const routes = require('./routes/index.js');

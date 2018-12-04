@@ -1,5 +1,16 @@
 <% include adminHeader %>
-<body>
+
+    <ul>
+        <li><a href="adminHome">Profile</a></li>
+        <li><a href="adminSearch">Search</a></li>
+        <li><a href="addCourse"  class="active">Add Course</a></li>
+        <li><a href="updateDeleteCourse">Update/Delete</a></li>
+        <li style="float:right"><a href="/">Logout</a></li>
+    </ul>
+
+    <br>
+    <br>
+
     <form method="post" action="/users/signup">
         <div class="row">
             <div class="col-md-4"></div>
