@@ -1,19 +1,20 @@
 <% include userHeader %>
 
-    <ul>
-        <li><a href="/userHome">Profile</a></li>
-        <li><a href="/userSearch">Search</a></li>
-        <li><a href="/userRegisterDrop"  class="active">Register/Drop</a></li>
-        <li style="float:right"><a href="/">Logout</a></li>
-    </ul>
+<ul>
+    <li><a href="/userHome">Profile</a></li>
+    <li><a href="/userSearch">Search</a></li>
+    <li><a href="/userRegisterDrop" class="active">Register/Drop</a></li>
+    <li style="float:right"><a href="/">Logout</a></li>
+</ul>
 
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-md-2"></div>
-        <span style="font-size: 20px"><b> &nbsp;&nbsp;Courses Registered </b></span>
-    </div>
+<br>
+<br>
+<div class="row">
     <div class="col-md-2"></div>
+    <span style="font-size: 20px"><b> &nbsp;&nbsp;Courses Registered </b></span>
+</div>
+<div class="col-md-2"></div>
+<form method="get" action="/drop">
     <table id="courses">
         <thead>
             <tr>
@@ -28,26 +29,44 @@
             </tr>
         </thead>
 
+        <% for(var i=0; i<Courses_Registered.length; i++) {%>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
             <td>
-                    <input class="btn btn-warning" type="button" value='Drop'>
+                <%= i+1 %>
+            </td>
+            <td>
+                <%= Courses_Registered[i].Course_Name%>
+            </td>
+            <td>
+                <%= Courses_Registered[i].CourseID%>
+            </td>
+            <td>
+                <%= Courses_Registered[i].Timings%>
+            </td>
+            <td>
+                <%= Courses_Registered[i].Start_Date%>
+            </td>
+            <td>
+                <%= Courses_Registered[i].End_Date%>
+            </td>
+            <td>
+                <%= Courses_Registered[i].Location%>
+            </td>
+
+            <td>
+                <input class="btn btn-warning" type="button" value='Drop'>
             </td>
         </tr>
+        <% } %>
     </table>
-
-    <br><br>
-    <div class="row">
-        <div class="col-md-2"></div>
-        <span style="font-size: 20px"><b> &nbsp;&nbsp;Courses Available </b></span>
-    </div>
+</form>
+<br><br>
+<div class="row">
     <div class="col-md-2"></div>
+    <span style="font-size: 20px"><b> &nbsp;&nbsp;Courses Available </b></span>
+</div>
+<div class="col-md-2"></div>
+<form method="get" action="/register">
     <table id="courses">
         <thead>
             <tr>
@@ -62,20 +81,37 @@
             </tr>
         </thead>
 
+
+        <% for(var i=0; i<Courses_Not.length; i++) {%>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
             <td>
-                    <input class="btn btn-primary" type="button" value='Register'>
+                <%= i+1 %>
+            </td>
+            <td>
+                <%= Courses_Not[i].Course_Name%>
+            </td>
+            <td>
+                <%= Courses_Not[i].CourseID%>
+            </td>
+            <td>
+                <%= Courses_Not[i].Timings%>
+            </td>
+            <td>
+                <%= Courses_Not[i].Start_Date%>
+            </td>
+            <td>
+                <%= Courses_Not[i].End_Date%>
+            </td>
+            <td>
+                <%= Courses_Not[i].Location%>
+            </td>
+            <td>
+                <input class="btn btn-primary" type="button" value='Register'>
             </td>
         </tr>
+        <% } %>
     </table>
-
+</form>
 </body>
 
 </html>

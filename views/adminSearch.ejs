@@ -11,6 +11,8 @@
     <br>
     <br>
 
+   
+<form method="GET" action="/adminSearchGo">
     <div class="row">
         <div class="col-md-5"></div>
         <div class="col-md-6">
@@ -20,10 +22,32 @@
                 <button class="btn btn-success" type="submit">Go</button>
             </div>
         </div>
+        <div class="col-md-1"></div>
     </div>
+    </form>
+    
     <br>
 
+    
+    <br>
+    <br>
+    <% if(User != null) {%>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-6">
+            <span style="font-size: 20px"><b>Student Name :</b> <%=User.First_Name +" " +User.Last_Name %></span>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-6">
+            <span style="font-size: 20px"><b>Student Id  &emsp; &nbsp; : </b> <%=User.SID %> </span>
+        </div>
+    </div>
+    <% }%>
     <br><br>
+
     <div class="row">
         <div class="col-md-2"></div>
         <span style="font-size: 20px"><b> &nbsp;&nbsp;Courses Registered </b></span>
@@ -41,18 +65,22 @@
                 <th>Location</th>
             </tr>
         </thead>
-
+        <% for(var i=0; i<Courses_Registered.length; i++) {%>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td> <%= i+1 %></td>
+            <td> <%= Courses_Registered[i].Course_Name%></td>
+            <td> <%= Courses_Registered[i].CourseID%></td>
+            <td> <%= Courses_Registered[i].Timings%></td>
+            <td> <%= Courses_Registered[i].Start_Date%></td>
+            <td> <%= Courses_Registered[i].End_Date%></td>
+            <td> <%= Courses_Registered[i].Location%></td>
         </tr>
+        <% } %>
     </table>
 
+
+    <br><br>
+    
 </body>
 
 </html>

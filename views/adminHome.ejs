@@ -14,18 +14,16 @@
     <div class="row">
         <div class="col-md-5"></div>
         <div class="col-md-6">
-            <span style="font-size: 20px"><b>Faculty Name: </b></span>
-            &emsp;
-            <span style="font-size: 20px">Value</span>
+            <span style="font-size: 20px"><b>Faculty Name: </b>  <%=User.First_Name +" " +User.Last_Name %></span>
+           
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-md-5"></div>
         <div class="col-md-6">
-            <span style="font-size: 20px"><b>Faculty Id: </b></span>
-            &emsp; &emsp; &emsp;
-            <span style="font-size: 20px">Value</span>
+            <span style="font-size: 20px"><b>Faculty Id  &emsp; &nbsp;:</b> <%=User.FID %></span>
+            
         </div>
     </div>
 
@@ -35,6 +33,7 @@
         <div class="col-md-2"></div>
         <span style="font-size: 20px"><b> &nbsp;&nbsp;Courses Taught </b></span>
     </div>
+    <br><br>
     <div class="col-md-2"></div>
     <table id="courses">
         <thead>
@@ -48,16 +47,17 @@
                 <th>Location</th>
             </tr>
         </thead>
-
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        <% for(var i=0; i<Courses_teaching.length; i++) {%>
+                <tr>
+                    <td> <%= i+1 %></td>
+                    <td> <%= Courses_teaching[i].Course_Name%></td>
+                    <td> <%= Courses_teaching[i].CourseID%></td>
+                    <td> <%= Courses_teaching[i].Timings%></td>
+                    <td> <%= Courses_teaching[i].Start_Date%></td>
+                    <td> <%= Courses_teaching[i].End_Date%></td>
+                    <td> <%= Courses_teaching[i].Location%></td>
+                </tr>
+                <% } %>
     </table>
 
 </body>

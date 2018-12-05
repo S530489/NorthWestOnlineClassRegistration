@@ -29,11 +29,7 @@ app.use(bodyParser.json());
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 
-app.all("/", function (request, response) {
-    console.log("test")
-     response.render('home.ejs');
-});
-
+console.log("test")
 
 // handle http GET requests (default)
   

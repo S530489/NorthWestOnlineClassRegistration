@@ -33,15 +33,17 @@
             </tr>
         </thead>
 
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <% for(var i=0; i<Courses_teaching.length; i++) {%>
+                <tr>
+                    <td> <%= i+1 %></td>
+                    <td> <%= Courses_teaching[i].Course_Name%></td>
+                    <td> <%= Courses_teaching[i].CourseID%></td>
+                    <td> <%= Courses_teaching[i].Timings%></td>
+                    <td> <%= Courses_teaching[i].Start_Date%></td>
+                    <td> <%= Courses_teaching[i].End_Date%></td>
+                    <td> <%= Courses_teaching[i].Location%></td>
+                    <td> <%= Courses_teaching[i].seats%></td>
+                
             <td>
                     <input class="btn btn-primary" type="button" value='Update'>
             </td>
@@ -49,4 +51,5 @@
                 <input class="btn btn-warning" type="button" value='Delete'>
         </td>
         </tr>
+        <% } %>
     </table>

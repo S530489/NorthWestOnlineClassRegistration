@@ -6,25 +6,21 @@
         <li><a href="/userRegisterDrop">Register/Drop</a></li>
         <li style="float:right"><a href="/">Logout</a></li>
     </ul>
-
+    
     <br>
     <br>
 
     <div class="row">
         <div class="col-md-5"></div>
         <div class="col-md-6">
-            <span style="font-size: 20px"><b>Student Name: </b></span>
-            &emsp;
-            <span style="font-size: 20px">Value</span>
+            <span style="font-size: 20px"><b>Student Name :</b> <%=User.First_Name +" " +User.Last_Name %></span>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-md-5"></div>
         <div class="col-md-6">
-            <span style="font-size: 20px"><b>Student Id: </b></span>
-            &emsp; &emsp; &emsp;
-            <span style="font-size: 20px">Value</span>
+            <span style="font-size: 20px"><b>Student Id  &emsp; &nbsp; : </b> <%=User.SID %> </span>
         </div>
     </div>
 
@@ -47,16 +43,17 @@
                 <th>Location</th>
             </tr>
         </thead>
-
+        <% for(var i=0; i<Courses_Registered.length; i++) {%>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td> <%= i+1 %></td>
+            <td> <%= Courses_Registered[i].Course_Name%></td>
+            <td> <%= Courses_Registered[i].CourseID%></td>
+            <td> <%= Courses_Registered[i].Timings%></td>
+            <td> <%= Courses_Registered[i].Start_Date%></td>
+            <td> <%= Courses_Registered[i].End_Date%></td>
+            <td> <%= Courses_Registered[i].Location%></td>
         </tr>
+        <% } %>
     </table>
 
 </body>
