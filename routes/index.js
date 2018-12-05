@@ -11,14 +11,14 @@ var faculty = [{FID:"f530489",First_Name:"Case",Last_Name:"Dennis",Password:"123
 var courses = [{CourseID:"C123",Course_Name:"Java", Timings:"10:30",Start_Date:"08/10/2018",End_Date:"11/15/2018",Location:"Colden Hall",seats: 20},
                {CourseID:"C124",Course_Name:"Web-apps", Timings:"09:30",Start_Date:"08/10/2018",End_Date:"11/15/2018",Location:"Colden Hall",seats : 20},
                {CourseID:"C125",Course_Name:"BigData", Timings:"08:00",Start_Date:"08/10/2018",End_Date:"11/15/2018",Location:"Colden Hall",seats: 25}]
-var CurrentID ;
+var CurrentID = null;
 var Student_Courses = [];
 var Other_Courses = [];
-var Current_user;
+var Current_user = null;
 var result_Course = null;
 
-var FCurrent_user;
-var FIndex;
+var FCurrent_user = null;
+var FIndex = null;
 var Courses_taught = [];
 var user = null;
 var resultcourses = [];
