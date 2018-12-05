@@ -13,10 +13,13 @@
 
 
     <div class="row">
-        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
         <span style="font-size: 20px"><b> &nbsp;&nbsp;Courses Taught</b></span>
     </div>
-    <div class="col-md-2"></div>
+    <br>
+    <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
     <table id="courses">
         <thead>
             <tr>
@@ -32,24 +35,54 @@
                 <th>Delete</th>
             </tr>
         </thead>
-
+        
         <% for(var i=0; i<Courses_teaching.length; i++) {%>
+            
                 <tr>
-                    <td> <%= i+1 %></td>
-                    <td> <%= Courses_teaching[i].Course_Name%></td>
-                    <td> <%= Courses_teaching[i].CourseID%></td>
-                    <td> <%= Courses_teaching[i].Timings%></td>
-                    <td> <%= Courses_teaching[i].Start_Date%></td>
-                    <td> <%= Courses_teaching[i].End_Date%></td>
-                    <td> <%= Courses_teaching[i].Location%></td>
-                    <td> <%= Courses_teaching[i].seats%></td>
-                
+         <form method="post" action="/update">
+                    <td> 
+                        <input type="text" size = 1 name="sno" value=<%= i+1 %> />
+                    </td>
+                    <td> 
+                        <input type="text"  name="sno" size = 4 value=<%= Courses_teaching[i].Course_Name %> />
+                    </td>
+                    <td> 
+                            <input type="text"  size = 4 name="sno" value= <%= Courses_teaching[i].CourseID %> />
+                    </td>
+                    <td> 
+                            <input type="text"  size = 5 name="sno" value=  <%= Courses_teaching[i].Timings%> />
+                    </td>
+                    <td> 
+                            <input type="text"  size = 7  name="sno" value= <%= Courses_teaching[i].Start_Date%> />
+                    </td>
+                    <td> 
+                            <input type="text" size = 7 name="sno" value= <%= Courses_teaching[i].End_Date%> />
+                    </td>
+                    <td> 
+                            <input type="text"  size = 9 name="sno" value= <%= Courses_teaching[i].Location %> />
+                    </td>
+                    <td> 
+                            <input type="text"  size = 2 name="sno" value= <%= Courses_teaching[i].seats %> />
+                    </td>
+                   
+         
             <td>
-                    <input class="btn btn-primary" type="button" value='Update'>
+                    <input class="btn btn-primary" type="submit" value='Update'>
             </td>
+            <td hidden>
+                    <input type="text"  name= "courseid" hidden value= <%= Courses_teaching[i].CourseID %> >
+            </td>
+        </form>
+        <form method="post" action="/delete">
             <td>
-                <input class="btn btn-warning" type="button" value='Delete'>
+                <input class="btn btn-warning" type="submit" value='Delete'>
         </td>
+        <td hidden>
+                <input type="text"  name= "courseid" hidden value= <%= Courses_teaching[i].CourseID %> >
+        </td>
+    </form>
         </tr>
         <% } %>
     </table>
+    </div>
+</div>

@@ -5,10 +5,10 @@ var users = [{SID:"s530489",First_Name:"Sai Kumar",Last_Name:"Uppala",Password:"
              {SID:"s530488",First_Name:"Swaroop",Last_Name:"Aditya",Password:"1234567",pic:"img",courses:["C124","C125"]}];
 
 var faculty = [{FID:"f530489",First_Name:"Case",Last_Name:"Dennis",Password:"1234567",pic:"img",courses:["C123","C125"]},
-              {FID:"f530489",First_Name:"Nathan",Last_Name:"Eloe",Password:"1234567",pic:"img",courses: ["C123"]}]
+              {FID:"f530488",First_Name:"Nathan",Last_Name:"Eloe",Password:"1234567",pic:"img",courses: ["C123"]}]
 
 
-var courses = [{CourseID:"C123",Course_Name:"Java", Timings:"10:30",Start_Date:"08/10/2018",End_Date:"11/15/2018",Location:"Colden Hall",seats: 20},
+var courses = [{CourseID:"C123",Course_Name:"Java", Timings:"10:30",Start_Date:"08/10/2018",End_Date:"11/15/2018",Location:"CDH-3650",seats: 20},
                {CourseID:"C124",Course_Name:"Web-apps", Timings:"09:30",Start_Date:"08/10/2018",End_Date:"11/15/2018",Location:"Colden Hall",seats : 20},
                {CourseID:"C125",Course_Name:"BigData", Timings:"08:00",Start_Date:"08/10/2018",End_Date:"11/15/2018",Location:"Colden Hall",seats: 25}]
 var CurrentID = null;
@@ -24,28 +24,6 @@ var user = null;
 var resultcourses = [];
 
 
-router.post("/register", function (req, res) {
-  var CID = req.body.courseid;
-  console.log(CID);
-  var index ;
-  for(i = 0;i<Other_Courses.length ; i++){
-    if(CID == Other_Courses[i].CourseID){
-      Student_Courses.push(Other_Courses[i]);
-      index = i;
-      break;
-    }
-  }
-  for(i=index;i<Other_Courses.length-1;i++){
-    Other_Courses[i] = Other_Courses[i+1];
-  }
-  Other_Courses.pop();
-
-  console.log(Student_Courses);
-  console.log(Other_Courses);
-
-  res.render("userRegisterDrop.ejs",{User : Current_user, Courses_Registered : Student_Courses, Courses_Not : Other_Courses});
-  
-});
 
 router.all("/", function (request, response) {
   CurrentID = null ;
@@ -192,6 +170,28 @@ router.post("/drop", function (req, res) {
   res.render("userRegisterDrop.ejs",{User : Current_user, Courses_Registered : Student_Courses, Courses_Not : Other_Courses});
 });
 
+router.post("/register", function (req, res) {
+  var CID = req.body.courseid;
+  console.log(CID);
+  var index ;
+  for(i = 0;i<Other_Courses.length ; i++){
+    if(CID == Other_Courses[i].CourseID){
+      Student_Courses.push(Other_Courses[i]);
+      index = i;
+      break;
+    }
+  }
+  for(i=index;i<Other_Courses.length-1;i++){
+    Other_Courses[i] = Other_Courses[i+1];
+  }
+  Other_Courses.pop();
+
+  console.log(Student_Courses);
+  console.log(Other_Courses);
+
+  res.render("userRegisterDrop.ejs",{User : Current_user, Courses_Registered : Student_Courses, Courses_Not : Other_Courses});
+  
+});
 
 //Admin routes
 
@@ -273,6 +273,21 @@ router.get("/adminSearchGo", function (req, res) {
  
 });
 
+router.post("/Createfaculty", function (req, res) {
+
+  var new_faculty = {
+    FID: req.body.studentId,
+    First_Name: req.body.firstName,
+    Last_Name: req.body.lastName,
+    Password: req.body.password,
+    pic:"img",
+    courses:[]
+  }
+  console.log(new_faculty);
+  faculty.push(new_faculty);
+  console.log(faculty)
+  res.render("adminLogin.ejs");
+});
 
 
 
@@ -307,6 +322,10 @@ router.get("/updateDeleteCourse", function (req, res) {
   res.render("adminUpdateDelete.ejs" ,{Courses_teaching : Courses_taught});
 });
 
+router.post("/update", function (req, res) {
+  console.log(req.body);
+  // res.render("adminUpdateDelete.ejs" ,{Courses_teaching : Courses_taught});
+});
 
 
 
