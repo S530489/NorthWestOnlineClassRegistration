@@ -24,6 +24,29 @@ var user = null;
 var resultcourses = [];
 
 
+router.post("/register", function (req, res) {
+  var CID = req.body.courseid;
+  console.log(CID);
+  var index ;
+  for(i = 0;i<Other_Courses.length ; i++){
+    if(CID == Other_Courses[i].CourseID){
+      Student_Courses.push(Other_Courses[i]);
+      index = i;
+      break;
+    }
+  }
+  for(i=index;i<Other_Courses.length-1;i++){
+    Other_Courses[i] = Other_Courses[i+1];
+  }
+  Other_Courses.pop();
+
+  console.log(Student_Courses);
+  console.log(Other_Courses);
+
+  res.render("userRegisterDrop.ejs",{User : Current_user, Courses_Registered : Student_Courses, Courses_Not : Other_Courses});
+  
+});
+
 router.all("/", function (request, response) {
   CurrentID = null ;
   Student_Courses = [];
@@ -142,6 +165,33 @@ router.get("/userSearchGo", function (req, res) {
   }
   result_Course = null;
 });
+
+
+router.post("/drop", function (req, res) {
+  var CID = req.body.courseid;
+  console.log(CID)
+  var index;
+  for(i=0;i<Student_Courses.length;i++){
+    if(CID == Student_Courses[i].CourseID){
+      console.log("came to push")
+      Other_Courses.push(Student_Courses[i]);
+      index = i;
+      break;
+    }
+  }
+  for(i=index;i<Student_Courses.length-1;i++){
+    Student_Courses[i] = Student_Courses[i+1];
+  }
+  
+  Student_Courses.pop();
+  console.log("Student_Courses :" )
+  console.log(Student_Courses);
+  console.log("Other_Courses :")
+  console.log(Other_Courses)
+  
+  res.render("userRegisterDrop.ejs",{User : Current_user, Courses_Registered : Student_Courses, Courses_Not : Other_Courses});
+});
+
 
 //Admin routes
 

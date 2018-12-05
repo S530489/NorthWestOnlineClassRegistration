@@ -14,7 +14,7 @@
     <span style="font-size: 20px"><b> &nbsp;&nbsp;Courses Registered </b></span>
 </div>
 <div class="col-md-2"></div>
-<form method="get" action="/drop">
+
     <table id="courses">
         <thead>
             <tr>
@@ -52,21 +52,26 @@
             <td>
                 <%= Courses_Registered[i].Location%>
             </td>
-
+            <form method="post" action="/drop">
             <td>
-                <input class="btn btn-warning" type="button" value='Drop'>
+                <input class="btn btn-warning" type="submit" value= "Drop">
             </td>
+            
+            <td hidden>
+                    <input type="text"  name= "courseid" hidden value= <%= Courses_Registered[i].CourseID %> >
+            </td>
+        </form>
         </tr>
         <% } %>
     </table>
-</form>
+
 <br><br>
 <div class="row">
     <div class="col-md-2"></div>
     <span style="font-size: 20px"><b> &nbsp;&nbsp;Courses Available </b></span>
 </div>
 <div class="col-md-2"></div>
-<form method="get" action="/register">
+
     <table id="courses">
         <thead>
             <tr>
@@ -105,13 +110,19 @@
             <td>
                 <%= Courses_Not[i].Location%>
             </td>
+            <form method="post" action="/register">
             <td>
-                <input class="btn btn-primary" type="button" value='Register'>
+                <input class="btn btn-primary" type="submit" value='Register'>
             </td>
+
+            <td hidden>
+                    <input type="text"  name= "courseid" hidden value= <%= Courses_Not[i].CourseID %> >
+            </td>
+        </form>
         </tr>
         <% } %>
     </table>
-</form>
+
 </body>
 
 </html>
