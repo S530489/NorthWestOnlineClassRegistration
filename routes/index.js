@@ -28,6 +28,12 @@ var user = null;
 var resultcourses = [];
 
 
+router.post("/update", function (req, res) {
+  console.log(req.body);
+});
+
+
+
 
 router.all("/", function (request, response) {
   CurrentID = null;
@@ -125,12 +131,14 @@ router.post("/createUser", function (req, res) {
     pic: "img",
     courses: []
   }
-  console.log(new_user);
+  
   if (req.body.password == req.body.password2) {
+    console.log(new_user);
     users.push(new_user);
     res.render("userSignup.ejs", { errormsg: "User has been created successfully" });
   }
   else {
+    console.log("came here into else")
     res.render("userSignup.ejs", { errormsg: "Passwords didn't match, please enter again" });
   }
 
