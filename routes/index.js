@@ -29,10 +29,28 @@ var resultcourses = [];
 
 
 router.post("/update", function (req, res) {
-  console.log(req.body);
+  console.log(req.body.courseid);
+  courseid = req.body.courseid
+  details = req.body.sno;
+  for(i=0;i<courses.length;i++){
+    if(courses[i].CourseID == courseid){
+
+    }
+  }
+
+
 });
 
-
+var i = { sno:
+   [ '1',
+     'Java',
+     'C123',
+     '10:30',
+     '2019-01-15',
+     '2019-04-26',
+     'CH-3650',
+     '20' ],
+  courseid: 'C123' }
 
 
 router.all("/", function (request, response) {
@@ -111,7 +129,7 @@ router.post("/userHome", function (req, res) {
   }
   if (count == 0) {
     console.log("not a valid user id and password");
-    res.render("userLogin.ejs", { errormsg: "Not a valid combination of ID and Password" });
+    res.render("userLogin.ejs", { errormsg: "Incorrect Username/Password" });
   }
 
 });
@@ -135,7 +153,7 @@ router.post("/createUser", function (req, res) {
   if (req.body.password == req.body.password2) {
     console.log(new_user);
     users.push(new_user);
-    res.render("userSignup.ejs", { errormsg: "User has been created successfully" });
+    res.render("userSignup.ejs", { errormsg: "User has been registered successfully" });
   }
   else {
     console.log("came here into else")
@@ -162,7 +180,7 @@ router.get("/userSearchGo", function (req, res) {
     res.render("userSearch.ejs", { course: result_Course,errormsg: "success" });
   }
   else {
-    res.render("userSearch.ejs", { course: result_Course,errormsg: "No Course found, Please check the course ID" });
+    res.render("userSearch.ejs", { course: result_Course,errormsg: "No course found, Please check the course ID" });
   }
   result_Course = null;
 });
@@ -258,7 +276,7 @@ router.post("/adminHome", function (req, res) {
     }
   }
   if (count == 0) {
-    res.render("adminLogin.ejs", { errormsg: "Not a Valid Combination of ID and Password" });
+    res.render("adminLogin.ejs", { errormsg: "Incorrect Username/Password" });
   }
 
 
@@ -315,7 +333,7 @@ router.post("/Createfaculty", function (req, res) {
 
   if (req.body.password == req.body.password2) {
     faculty.push(new_faculty);
-    res.render("adminSignup.ejs", { errormsg: "Faculty has been created successfully" });
+    res.render("adminSignup.ejs", { errormsg: "Faculty has been registered successfully" });
   }
   else {
     res.render("adminSignup.ejs", { errormsg: "Passwords didn't match, please enter again" });
@@ -344,7 +362,7 @@ router.post("/addCourse", function (req, res) {
    }
 
   if(date1 > date2){
-    res.render("adminAddCourse.ejs",{errormsg: "Start Date should come before End date"});
+    res.render("adminAddCourse.ejs",{errormsg: "Start date should come before end date"});
   }
 
   if (new_Course != null) {
