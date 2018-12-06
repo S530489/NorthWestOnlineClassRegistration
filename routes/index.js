@@ -393,8 +393,7 @@ router.post("/addCourse", function (req, res) {
   if(date1 > date2){
     res.render("adminAddCourse.ejs",{errormsg: "Start date should come before end date"});
   }
-
-  if (new_Course != null) {
+  else{
     courses.push(new_Course);
     Courses_taught.push(new_Course)
     faculty[FIndex].courses.push(req.body.courseid);
