@@ -10,25 +10,34 @@
 
     <br>
     <br>
+    
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            document.getElementById("profileImage").src = document.getElementById("imageid").innerHTML
+        });
+    </script>
     <% if(User != null) {%>
     <div class="row">
-        <div class="col-md-5"></div>
+        <div class="col-md-2"></div>
         <div class="col-md-6">
-            <span style="font-size: 20px"><b>Faculty Name: </b>  <%=User.First_Name +" " +User.Last_Name %></span>
-           
+            <span style="font-size: 20px"><b>Faculty Name :</b> <%=User.First_Name +" " +User.Last_Name %></span>
+            <br><br><br>
+            <span style="font-size: 20px"><b>Faculty Id  &emsp; &nbsp; : </b> <%=User.SID %> </span>
         </div>
+        <p id="imageid" hidden><%= User.pic %></p>
+        <div class="col-md-4">
+                <img  style="border:5px green" src="" alt="Image not available for the user" width="200" height="200"  id="profileImage" > 
+        </div>
+
     </div>
     <br>
     <div class="row">
-        <div class="col-md-5"></div>
-        <div class="col-md-6">
-            <span style="font-size: 20px"><b>Faculty Id  &emsp; &nbsp;:</b> <%=User.FID %></span>
-            
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <!-- <span style="font-size: 20px"><b>Student Id  &emsp; &nbsp; : </b> <%=User.SID %> </span> -->
         </div>
     </div>
     <% } %>
-
-    <br><br>
 
     <div class="row">
         <div class="col-md-2"></div>

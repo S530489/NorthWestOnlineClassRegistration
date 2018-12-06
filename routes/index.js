@@ -5,8 +5,8 @@ router.use(flash())
 
 
 console.log('Inside routes/index')
-var users = [{ SID: "s530489", First_Name: "Sai Kumar", Last_Name: "Uppala", Password: "1234567", pic: "img", courses: ["C123", "C125"] },
-{ SID: "s530488", First_Name: "Swaroop", Last_Name: "Aditya", Password: "1234567", pic: "img", courses: ["C124", "C125"] }];
+var users = [{ SID: "s530489", First_Name: "Sai Kumar", Last_Name: "Uppala", Password: "1234567", pic: "saikumar.jpg", courses: ["C123", "C125"] },
+{ SID: "s530488", First_Name: "Swaroop", Last_Name: "Aditya", Password: "1234567", pic: "aditya.jpeg", courses: ["C124", "C125"] }];
 
 var faculty = [{ FID: "f530489", First_Name: "Case", Last_Name: "Dennis", Password: "1234567", pic: "img", courses: ["C123", "C125"] },
 { FID: "f530488", First_Name: "Nathan", Last_Name: "Eloe", Password: "1234567", pic: "img", courses: ["C123"] }]
@@ -176,7 +176,7 @@ router.post("/createUser", function (req, res) {
     First_Name: req.body.firstName,
     Last_Name: req.body.lastName,
     Password: req.body.password,
-    pic: "img",
+    pic: "shiva.jpeg",
     courses: []
   }
   
