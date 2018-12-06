@@ -4,29 +4,70 @@
     <h2>Sign Up</h2><br>
 </div>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<script type="text/javascript">
+    $(window).on('load',function(){
+        if(document.getElementById("forerrormsg").innerHTML != "success"){
+            document.getElementById("displaymsg").innerHTML = document.getElementById("forerrormsg").innerHTML;
+            if(document.getElementById("forerrormsg").innerHTML == "Passwords didn't match, please enter again")
+            {
+                document.getElementById("displaymsg").style.color = "red";
+            }
+            else{
+            document.getElementById("displaymsg").style.color = "green";
+            }
+             $('#myModal').modal('show');
+        }
+    });
+</script>
+<div class="container">
+    <p id="forerrormsg" hidden><%= errormsg %></p>
+       
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Error Message</h4>
+        </div>
+        <div class="modal-body">
+          <p id="displaymsg" style="font-size: 30px;font-family:Times New Roman, Times, serif;">Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
 <form method="post" action="/createUser">
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <div class="form-group">
                 <label>Student Id</label>
-                <input type="text" class="form-control" placeholder="Student Id" name="studentId">
+                <input type="text" class="form-control" placeholder="Student Id" name="studentId" required>
             </div>
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" class="form-control" placeholder="First Name" name="firstName">
+                <input type="text" class="form-control" placeholder="First Name" name="firstName" required>
             </div>
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text" class="form-control" placeholder="Last Name" name="lastName">
+                <input type="text" class="form-control" placeholder="Last Name" name="lastName" required>
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control" placeholder="Password" name="password">
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
             </div>
             <div class="form-group">
                 <label>Confirm Password</label>
-                <input type="password" class="form-control" placeholder="Password" name="password2">
+                <input type="password" class="form-control" placeholder="Password" name="password2" required>
             </div>
 
             <div class="form-group">
@@ -49,4 +90,6 @@
 <div class="row">
 <div class="col-md-4"></div>
         <p style="font-size:15px">Already have an account? <a href="userLogin">Sign in</a>.</p>
+</div>
+
 </div>
