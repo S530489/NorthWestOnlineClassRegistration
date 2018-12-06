@@ -12,9 +12,9 @@ var faculty = [{ FID: "f530489", First_Name: "Case", Last_Name: "Dennis", Passwo
 { FID: "f530488", First_Name: "Nathan", Last_Name: "Eloe", Password: "1234567", pic: "img", courses: ["C123"] }]
 
 
-var courses = [{ CourseID: "C123", Course_Name: "Java", Timings: "10:30", Start_Date: "08/10/2018", End_Date: "11/15/2018", Location: "CDH-3650", seats: 20 },
-{ CourseID: "C124", Course_Name: "Web-apps", Timings: "09:30", Start_Date: "08/10/2018", End_Date: "11/15/2018", Location: "Colden Hall", seats: 20 },
-{ CourseID: "C125", Course_Name: "BigData", Timings: "08:00", Start_Date: "08/10/2018", End_Date: "11/15/2018", Location: "Colden Hall", seats: 25 }]
+var courses = [{ CourseID: "C123", Course_Name: "Java", Timings: "10:30", Start_Date: "2019-01-15", End_Date: "2019-04-26", Location: "CH-3650", seats: 20 },
+{ CourseID: "C124", Course_Name: "Web-apps", Timings: "09:30", Start_Date: "2019-01-14", End_Date: "2019-04-28", Location: "CH-3200", seats: 20 },
+{ CourseID: "C125", Course_Name: "BigData", Timings: "08:00", Start_Date: "2019-01-14", End_Date: "2019-04-19", Location: "CH-1150", seats: 25 }]
 var CurrentID = null;
 var Student_Courses = [];
 var Other_Courses = [];
