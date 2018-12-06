@@ -14,7 +14,7 @@
     
 <script type="text/javascript">
     $(window).on('load',function(){
-        document.getElementById("profileImage").src = document.getElementById("imageid").innerHTML
+        
         if(document.getElementById("forerrormsg").innerHTML != "success"){
             document.getElementById("displaymsg").innerHTML = document.getElementById("forerrormsg").innerHTML;
             
@@ -22,6 +22,7 @@
           
              $('#myModal').modal('show');
         }
+        document.getElementById("profileImage").src = document.getElementById("imageid").innerHTML
     });
 </script>
 <div class="container">
@@ -38,7 +39,7 @@
           <h4 class="modal-title">Error Message</h4>
         </div>
         <div class="modal-body">
-          <p id="displaymsg" style="font-size: 30px;font-family:Times New Roman, Times, serif;">Some text in the modal.</p>
+          <p id="displaymsg" style="font-size: 30px;font-family:Times New Roman, Times, serif;"></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -12,9 +12,9 @@ var faculty = [{ FID: "f530489", First_Name: "Case", Last_Name: "Dennis", Passwo
 { FID: "bearcat", First_Name: "Charitha", Last_Name: "Hettiarachchi", Password: "bearcat", pic: "hettiarachchi.jpg", courses: ["C123"] }]
 
 
-var courses = [{ CourseID: "C123", Course_Name: "Java", Timings: "10:30", Start_Date: "2019-01-15", End_Date: "2019-04-26", Location: "CH-3650", seats: 20 },
-{ CourseID: "C124", Course_Name: "Web-apps", Timings: "09:30", Start_Date: "2019-01-14", End_Date: "2019-04-28", Location: "CH-3200", seats: 20 },
-{ CourseID: "C125", Course_Name: "BigData", Timings: "08:00", Start_Date: "2019-01-14", End_Date: "2019-04-19", Location: "CH-1150", seats: 25 }]
+var courses = [{ CourseID: "C123", Course_Name: "Java", Timings: "10:30 AM - 11:50 AM", Start_Date: "2019-01-15", End_Date: "2019-04-26", Location: "CH-3650", seats: 20 },
+{ CourseID: "C124", Course_Name: "Web-apps", Timings: "09:30 AM - 10:20 AM", Start_Date: "2019-01-14", End_Date: "2019-04-28", Location: "CH-3200", seats: 20 },
+{ CourseID: "C125", Course_Name: "BigData", Timings: "02:30 PM - 3:45 PM", Start_Date: "2019-01-14", End_Date: "2019-04-19", Location: "CH-1150", seats: 25 }]
 var CurrentID = null;
 var Student_Courses = [];
 var Other_Courses = [];
@@ -337,11 +337,13 @@ router.get("/adminSearchGo", function (req, res) {
   }
   console.log(resultcourses)
   if (user != null) {
+   
     res.render("adminSearch.ejs", { User: user, Courses_Registered: resultcourses,errormsg: "success"});
     user = null;
     resultcourses = [];
   }
   else {
+   
     res.render("adminSearch.ejs", { User: user, Courses_Registered: resultcourses,errormsg: "No Student Found, Please check the ID" });
   }
 
