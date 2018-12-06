@@ -388,12 +388,14 @@ router.post("/Delete", function (req, res) {
   res.render("adminUpdateDelete.ejs", { Courses_teaching: Courses_taught,errormsg: "Course "+coursename+" has been deleted"});
 });
 
-router.post("/update", function (req, res) {
+router.post("/update123", function (req, res) {
+ 
   console.log(req.body.courseid);
   var courseid = req.body.courseid
   var details = req.body.sno;
   var index;
   var coursename;
+ 
   for(i=0;i<courses.length;i++){
     if(courses[i].CourseID == courseid){
       index = i;
@@ -413,10 +415,11 @@ router.post("/update", function (req, res) {
       Courses_taught[i] = courses[index];
     }
   }
-  console.log("courses taught");
+ 
   console.log(Courses_taught);
   console.log("all courses");
   console.log(courses);
+  console.log("sai");
   res.render("adminUpdateDelete.ejs", { Courses_teaching: Courses_taught,errormsg: "Course "+coursename+" has been updated"});
 
 
