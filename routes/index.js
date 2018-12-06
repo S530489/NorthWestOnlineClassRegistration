@@ -15,6 +15,8 @@ var faculty = [{ FID: "f530489", First_Name: "Case", Last_Name: "Dennis", Passwo
 var courses = [{ CourseID: "C123", Course_Name: "Java", Timings: "10:30 AM - 11:50 AM", Start_Date: "2019-01-15", End_Date: "2019-04-26", Location: "CH-3650", seats: 20 },
 { CourseID: "C124", Course_Name: "Web-apps", Timings: "09:30 AM - 10:20 AM", Start_Date: "2019-01-14", End_Date: "2019-04-28", Location: "CH-3200", seats: 20 },
 { CourseID: "C125", Course_Name: "BigData", Timings: "02:30 PM - 3:45 PM", Start_Date: "2019-01-14", End_Date: "2019-04-19", Location: "CH-1150", seats: 25 }]
+
+
 var CurrentID = null;
 var Student_Courses = [];
 var Other_Courses = [];
@@ -26,60 +28,6 @@ var FIndex = null;
 var Courses_taught = [];
 var user = null;
 var resultcourses = [];
-
-
-router.post("/Delete", function (req, res) {
-  var courseid = req.body.courseid;
-  var index;
-  var coursename;
-  for(i=0;i<Courses_taught.length;i++){
-    if(courseid == Courses_taught[i].CourseID){
-      coursename = Courses_taught[i].Course_Name
-      index =i;
-      break;
-    }
-  }
-  for(i=index;i<Courses_taught.length-1;i++){
-    Courses_taught[i]=Courses_taught[i+1];
-  }
-  Courses_taught.pop();
-  res.render("adminUpdateDelete.ejs", { Courses_teaching: Courses_taught,errormsg: "Course "+coursename+" has been deleted"});
-});
-
-router.post("/update", function (req, res) {
-  console.log(req.body.courseid);
-  var courseid = req.body.courseid
-  var details = req.body.sno;
-  var index;
-  var coursename;
-  for(i=0;i<courses.length;i++){
-    if(courses[i].CourseID == courseid){
-      index = i;
-      coursename = courses[i].Course_Name ;
-      courses[i].Course_Name = details[1];
-      courses[i].CourseID = details[2];
-      courses[i].Timings = details[3];
-      courses[i].Start_Date = details[4];
-      courses[i].End_Date = details[5];
-      courses[i].Location = details[6];
-      courses[i].seats = details[7];
-      break;
-    }
-  }
-  for(i=0;i<Courses_taught.length;i++){
-    if(Courses_taught[i].CourseID == courseid){
-      Courses_taught[i] = courses[index];
-    }
-  }
-  console.log("courses taught");
-  console.log(Courses_taught);
-  console.log("all courses");
-  console.log(courses);
-  res.render("adminUpdateDelete.ejs", { Courses_teaching: Courses_taught,errormsg: "Course "+coursename+" has been updated"});
-
-
-});
-
 
 
 
@@ -420,6 +368,58 @@ router.get("/updateDeleteCourse", function (req, res) {
 router.post("/update", function (req, res) {
   console.log(req.body);
   // res.render("adminUpdateDelete.ejs" ,{Courses_teaching : Courses_taught});
+});
+
+router.post("/Delete", function (req, res) {
+  var courseid = req.body.courseid;
+  var index;
+  var coursename;
+  for(i=0;i<Courses_taught.length;i++){
+    if(courseid == Courses_taught[i].CourseID){
+      coursename = Courses_taught[i].Course_Name
+      index =i;
+      break;
+    }
+  }
+  for(i=index;i<Courses_taught.length-1;i++){
+    Courses_taught[i]=Courses_taught[i+1];
+  }
+  Courses_taught.pop();
+  res.render("adminUpdateDelete.ejs", { Courses_teaching: Courses_taught,errormsg: "Course "+coursename+" has been deleted"});
+});
+
+router.post("/update", function (req, res) {
+  console.log(req.body.courseid);
+  var courseid = req.body.courseid
+  var details = req.body.sno;
+  var index;
+  var coursename;
+  for(i=0;i<courses.length;i++){
+    if(courses[i].CourseID == courseid){
+      index = i;
+      coursename = courses[i].Course_Name ;
+      courses[i].Course_Name = details[1];
+      courses[i].CourseID = details[2];
+      courses[i].Timings = details[3];
+      courses[i].Start_Date = details[4];
+      courses[i].End_Date = details[5];
+      courses[i].Location = details[6];
+      courses[i].seats = details[7];
+      break;
+    }
+  }
+  for(i=0;i<Courses_taught.length;i++){
+    if(Courses_taught[i].CourseID == courseid){
+      Courses_taught[i] = courses[index];
+    }
+  }
+  console.log("courses taught");
+  console.log(Courses_taught);
+  console.log("all courses");
+  console.log(courses);
+  res.render("adminUpdateDelete.ejs", { Courses_teaching: Courses_taught,errormsg: "Course "+coursename+" has been updated"});
+
+
 });
 
 
