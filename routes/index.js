@@ -28,29 +28,59 @@ var user = null;
 var resultcourses = [];
 
 
-router.post("/update", function (req, res) {
-  console.log(req.body.courseid);
-  courseid = req.body.courseid
-  details = req.body.sno;
-  for(i=0;i<courses.length;i++){
-    if(courses[i].CourseID == courseid){
-
+router.post("/Delete", function (req, res) {
+  var courseid = req.body.courseid;
+  var index;
+  var coursename;
+  for(i=0;i<Courses_taught.length;i++){
+    if(courseid == Courses_taught[i].CourseID){
+      coursename = Courses_taught[i].Course_Name
+      index =i;
+      break;
     }
   }
+  for(i=index;i<Courses_taught.length-1;i++){
+    Courses_taught[i]=Courses_taught[i+1];
+  }
+  Courses_taught.pop();
+  res.render("adminUpdateDelete.ejs", { Courses_teaching: Courses_taught,errormsg: "Course "+coursename+" has been deleted"});
+});
+
+router.post("/update", function (req, res) {
+  console.log(req.body.courseid);
+  var courseid = req.body.courseid
+  var details = req.body.sno;
+  var index;
+  var coursename;
+  for(i=0;i<courses.length;i++){
+    if(courses[i].CourseID == courseid){
+      index = i;
+      coursename = courses[i].Course_Name ;
+      courses[i].Course_Name = details[1];
+      courses[i].CourseID = details[2];
+      courses[i].Timings = details[3];
+      courses[i].Start_Date = details[4];
+      courses[i].End_Date = details[5];
+      courses[i].Location = details[6];
+      courses[i].seats = details[7];
+      break;
+    }
+  }
+  for(i=0;i<Courses_taught.length;i++){
+    if(Courses_taught[i].CourseID == courseid){
+      Courses_taught[i] = courses[index];
+    }
+  }
+  console.log("courses taught");
+  console.log(Courses_taught);
+  console.log("all courses");
+  console.log(courses);
+  res.render("adminUpdateDelete.ejs", { Courses_teaching: Courses_taught,errormsg: "Course "+coursename+" has been updated"});
 
 
 });
 
-var i = { sno:
-   [ '1',
-     'Java',
-     'C123',
-     '10:30',
-     '2019-01-15',
-     '2019-04-26',
-     'CH-3650',
-     '20' ],
-  courseid: 'C123' }
+
 
 
 router.all("/", function (request, response) {
@@ -384,7 +414,7 @@ router.get("/addCourse", function (req, res) {
 
 router.get("/updateDeleteCourse", function (req, res) {
   console.log(Courses_taught);
-  res.render("adminUpdateDelete.ejs", { Courses_teaching: Courses_taught });
+  res.render("adminUpdateDelete.ejs", { Courses_teaching: Courses_taught,errormsg: "success" });
 });
 
 router.post("/update", function (req, res) {

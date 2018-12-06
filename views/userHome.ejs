@@ -9,17 +9,23 @@
     
     <br>
     <br>
+    
     <% if(User != null) {%>
     <div class="row">
-        <div class="col-md-5"></div>
-        <div class="col-md-6">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
             <span style="font-size: 20px"><b>Student Name :</b> <%=User.First_Name +" " +User.Last_Name %></span>
         </div>
+        <p id="imageid" hidden><%= User.pic %></p>
+        <div class="col-md-6">
+                <img  style="border:5px solid black" src="" alt="Image not available for the user" width="210" height="260"  id="profileImage" > 
+        </div>
+
     </div>
     <br>
     <div class="row">
-        <div class="col-md-5"></div>
-        <div class="col-md-6">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
             <span style="font-size: 20px"><b>Student Id  &emsp; &nbsp; : </b> <%=User.SID %> </span>
         </div>
     </div>
