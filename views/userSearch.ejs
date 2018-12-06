@@ -8,12 +8,49 @@
 
 <br>
 <br>
+
+<script type="text/javascript">
+    $(window).on('load',function(){
+        if(document.getElementById("forerrormsg").innerHTML != "success"){
+            document.getElementById("displaymsg").innerHTML = document.getElementById("forerrormsg").innerHTML;
+            
+            document.getElementById("displaymsg").style.color = "red";
+            
+             $('#myModal').modal('show');
+        }
+    });
+</script>
+<div class="container">
+    <p id="forerrormsg" hidden><%= errormsg %></p>
+       
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Error Message</h4>
+        </div>
+        <div class="modal-body">
+          <p id="displaymsg" style="font-size: 30px;font-family:Times New Roman, Times, serif;">Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
 <form method="GET" action="/userSearchGo">
 <div class="row">
     <div class="col-md-5"></div>
     <div class="col-md-6">
         <div class="searchbar">
-            <input class="glyphicon glyphicon-search" type="text" placeholder="Search.." name="search">
+            <input class="glyphicon glyphicon-search" type="text" placeholder="Search.." name="search" required>
             &emsp;
             <button class="btn btn-success" type="submit">Go</button>
         </div>
@@ -55,6 +92,7 @@
             </tr>
      <% } %>
 </table>
+</div>
 
 </body>
 

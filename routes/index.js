@@ -111,7 +111,7 @@ router.post("/userHome", function (req, res) {
 });
 
 router.get("/userSearch", function (req, res) {
-  res.render("userSearch.ejs", { course: result_Course });
+  res.render("userSearch.ejs", { course: result_Course, errormsg: "success" });
 });
 
 router.post("/createUser", function (req, res) {
@@ -137,7 +137,7 @@ router.post("/createUser", function (req, res) {
 });
 
 router.get("/userRegisterDrop", function (req, res) {
-  res.render("userRegisterDrop.ejs", { User: Current_user, Courses_Registered: Student_Courses, Courses_Not: Other_Courses });
+  res.render("userRegisterDrop.ejs", { User: Current_user, Courses_Registered: Student_Courses, Courses_Not: Other_Courses, errormsg: "success"});
 
 });
 
@@ -151,10 +151,10 @@ router.get("/userSearchGo", function (req, res) {
   }
   console.log(result_Course)
   if (result_Course != null) {
-    res.render("userSearch.ejs", { course: result_Course });
+    res.render("userSearch.ejs", { course: result_Course,errormsg: "success" });
   }
   else {
-    console.log("no course found");
+    res.render("userSearch.ejs", { course: result_Course,errormsg: "No Course found, Please check the course ID" });
   }
   result_Course = null;
 });
@@ -162,11 +162,13 @@ router.get("/userSearchGo", function (req, res) {
 
 router.post("/drop", function (req, res) {
   var CID = req.body.courseid;
+  var courseName ;
   console.log(CID)
   var index;
   for (i = 0; i < Student_Courses.length; i++) {
     if (CID == Student_Courses[i].CourseID) {
       console.log("came to push")
+      courseName = Student_Courses[i].Course_Name;
       Other_Courses.push(Student_Courses[i]);
       index = i;
       break;
@@ -182,16 +184,18 @@ router.post("/drop", function (req, res) {
   console.log("Other_Courses :")
   console.log(Other_Courses)
 
-  res.render("userRegisterDrop.ejs", { User: Current_user, Courses_Registered: Student_Courses, Courses_Not: Other_Courses });
+  res.render("userRegisterDrop.ejs", { User: Current_user, Courses_Registered: Student_Courses, Courses_Not: Other_Courses, errormsg: "You dropped a Course -"+courseName });
 });
 
 router.post("/register", function (req, res) {
   var CID = req.body.courseid;
   console.log(CID);
+  var courseName ;
   var index;
   for (i = 0; i < Other_Courses.length; i++) {
     if (CID == Other_Courses[i].CourseID) {
       Student_Courses.push(Other_Courses[i]);
+      courseName = Other_Courses[i].Course_Name;
       index = i;
       break;
     }
@@ -204,8 +208,8 @@ router.post("/register", function (req, res) {
   console.log(Student_Courses);
   console.log(Other_Courses);
 
-  res.render("userRegisterDrop.ejs", { User: Current_user, Courses_Registered: Student_Courses, Courses_Not: Other_Courses });
-
+  res.render("userRegisterDrop.ejs", { User: Current_user, Courses_Registered: Student_Courses, Courses_Not: Other_Courses, errormsg: "You registered for a Course -"+courseName });
+  
 });
 
 //Admin routes
@@ -255,7 +259,7 @@ router.post("/adminHome", function (req, res) {
 
 
 router.get("/adminSearch", function (req, res) {
-  res.render("adminSearch.ejs", { User: user, Courses_Registered: resultcourses });
+  res.render("adminSearch.ejs", { User: user, Courses_Registered: resultcourses,errormsg: "success" });
 });
 
 
@@ -278,15 +282,16 @@ router.get("/adminSearchGo", function (req, res) {
   }
   console.log(resultcourses)
   if (user != null) {
-    res.render("adminSearch.ejs", { User: user, Courses_Registered: resultcourses });
+    res.render("adminSearch.ejs", { User: user, Courses_Registered: resultcourses,errormsg: "success"});
     user = null;
     resultcourses = [];
   }
   else {
-    res.render("adminSearch.ejs", { User: user, Courses_Registered: resultcourses });
+    res.render("adminSearch.ejs", { User: user, Courses_Registered: resultcourses,errormsg: "No Student Found, Please check the ID" });
   }
 
 });
+
 
 router.post("/Createfaculty", function (req, res) {
 
@@ -314,6 +319,12 @@ router.post("/Createfaculty", function (req, res) {
 
 
 router.post("/addCourse", function (req, res) {
+  console.log(req.body.startdate)
+  console.log(req.body.enddate)
+  console.log(req.body.time)
+  var date1 = new Date(req.body.startdate);
+  var date2 = new Date(req.body.enddate);
+  console.log(date1+"  "+date2)
   var new_Course = {
     CourseID: req.body.courseid,
     Course_Name: req.body.coursename,
@@ -322,21 +333,27 @@ router.post("/addCourse", function (req, res) {
     End_Date: req.body.enddate,
     Location: req.body.location,
     seats: req.body.seats
+   }
+
+  if(date1 > date2){
+    res.render("adminAddCourse.ejs",{errormsg: "Start Date should come before End date"});
   }
+
   if (new_Course != null) {
     courses.push(new_Course);
     Courses_taught.push(new_Course)
     faculty[FIndex].courses.push(req.body.courseid);
+    res.render("adminAddCourse.ejs",{errormsg: "New course "+req.body.coursename +" has been added"});
   }
 
   console.log(new_Course);
   console.log(courses);
-  res.render("adminAddCourse.ejs");
+ 
 });
 
 router.get("/addCourse", function (req, res) {
 
-  res.render("adminAddCourse.ejs");
+  res.render("adminAddCourse.ejs",{errormsg: "success"});
 });
 
 router.get("/updateDeleteCourse", function (req, res) {

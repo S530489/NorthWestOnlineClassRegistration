@@ -11,37 +11,84 @@
     <br>
     <br>
 
+
+     
+<script type="text/javascript">
+    $(window).on('load',function(){
+        if(document.getElementById("forerrormsg").innerHTML != "success"){
+            document.getElementById("displaymsg").innerHTML = document.getElementById("forerrormsg").innerHTML;
+            
+            if(document.getElementById("forerrormsg").innerHTML == "Start Date should come before End date")
+            {
+                document.getElementById("msgname").innerHTML = "Error Message";
+                document.getElementById("displaymsg").style.color = "red";
+            }
+            else{
+                document.getElementById("msgname").innerHTML = "Success Message"
+            document.getElementById("displaymsg").style.color = "green";
+            }
+          
+             $('#myModal').modal('show');
+        }
+    });
+</script>
+<div class="container">
+    <p id="forerrormsg" hidden><%= errormsg %></p>
+       
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 id="msgname" class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <p id="displaymsg" style="font-size: 30px;font-family:Times New Roman, Times, serif;">Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+   
     <form method="post" action="/addCourse">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Course Name:</label>
-                    <input type="text" class="form-control" name="coursename">
+                    <input type="text" class="form-control" name="coursename" required>
                 </div>
                 <div class="form-group">
                     <label>Course Id:</label>
-                    <input type="text" class="form-control" name="courseid">
+                    <input type="text" class="form-control" name="courseid" required>
                 </div>
                 <div class="form-group">
                     <label>Location</label>
-                    <input type="text" class="form-control"  name="location">
+                    <input type="text" class="form-control"  name="location" required>
                 </div>
                 <div class="form-group">
                     <label>Start Date:</label>
-                    <input type="text" class="form-control"  name="startdate">
+                    <input type="date" class="form-control"  name="startdate" required>
                 </div>
                 <div class="form-group">
                     <label>End Date</label>
-                    <input type="text" class="form-control"  name="enddate">
+                    <input type="date" class="form-control"  name="enddate" required>
                 </div>
                 <div class="form-group">
                         <label>Timings</label>
-                        <input type="text" class="form-control"  name="time">
+                        <input type="time" class="form-control"  name="time" required>
                     </div>
                 <div class="form-group">
-                    <label>No, of Seats:</label>
-                    <input type="text" class="form-control"  name="seats">
+                    <label>No of Seats:</label>
+                    <input type="text" class="form-control"  name="seats" required>
                 </div>
     
 
@@ -57,7 +104,7 @@
     
         </div>
     </form>
-
+</div>
 </body>
 
 </html>
