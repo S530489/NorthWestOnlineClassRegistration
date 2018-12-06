@@ -5,11 +5,11 @@ router.use(flash())
 
 
 console.log('Inside routes/index')
-var users = [{ SID: "s530489", First_Name: "Sai Kumar", Last_Name: "Uppala", Password: "1234567", pic: "saikumar.jpg", courses: ["C123", "C125"] },
+var users = [{ SID: "bearcat", First_Name: "Sai Kumar", Last_Name: "Uppala", Password: "bearcat", pic: "saikumar.jpg", courses: ["C123", "C125"] },
 { SID: "s530488", First_Name: "Swaroop", Last_Name: "Aditya", Password: "1234567", pic: "aditya.jpeg", courses: ["C124", "C125"] }];
 
 var faculty = [{ FID: "f530489", First_Name: "Case", Last_Name: "Dennis", Password: "1234567", pic: "case.jpg", courses: ["C123", "C125"] },
-{ FID: "f530488", First_Name: "Charitha", Last_Name: "Hettiarachchi", Password: "1234567", pic: "hettiarachchi.jpg", courses: ["C123"] }]
+{ FID: "bearcat", First_Name: "Charitha", Last_Name: "Hettiarachchi", Password: "bearcat", pic: "hettiarachchi.jpg", courses: ["C123"] }]
 
 
 var courses = [{ CourseID: "C123", Course_Name: "Java", Timings: "10:30", Start_Date: "2019-01-15", End_Date: "2019-04-26", Location: "CH-3650", seats: 20 },
